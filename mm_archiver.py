@@ -1,4 +1,4 @@
-import praw.exceptions
+import praw
 
 from secrets import secrets
 
