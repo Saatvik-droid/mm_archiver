@@ -1,7 +1,8 @@
-import praw
-import argparse
+import praw.exceptions
 
 from secrets import secrets
+
+import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p", dest="password", help="password for reddit account", required=True)
@@ -16,16 +17,7 @@ subreddit = args.subreddit
 number = args.number
 reply = args.reply
 
-# log into reddit
-reddit = praw.Reddit(client_id="c10F5e8h6dVDKQ",
-                     client_secret=secrets["client_secret"],
-                     password=password,
-                     user_agent="modmail archiver by u/SaatvikRamani",
-                     username="SaatvikRamani")
-
-# obtain all modmail conversations
-modmails = reddit.subreddit("all").modmail.conversations(other_subreddits=subreddit, sort="recent", state="all")
-
+#archiver def
 def archive(modmails, number, reply):
 
     # counter to count number of modmails gone through
@@ -48,8 +40,24 @@ def archive(modmails, number, reply):
 
         print("{0} modmail(s) archived" .format(counter))
 
+# log into reddit
+reddit = praw.Reddit(client_id="c10F5e8h6dVDKQ",
+                     client_secret=secrets["client_secret"],
+                     password=password,
+                     user_agent="modmail archiver by u/SaatvikRamani",
+                     username="SaatvikRamani")
 
-archive(conversations, number, reply)
+# obtain all modmail conversations
+modmails = reddit.subreddit("all").modmail.conversations(other_subreddits=subreddit, sort="recent", state="all")
+
+archive(modmails, number, reply)
+
+
+
+
+
+
+
 
 
 
