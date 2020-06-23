@@ -41,7 +41,7 @@ def archive(modmails, number, reply):
         print("{0} modmail(s) archived" .format(counter))
 
 # log into reddit
-reddit = praw.Reddit(client_id="c10F5e8h6dVDKQ",
+reddit = praw.Reddit(client_id=secrets["client_id"],
                      client_secret=secrets["client_secret"],
                      password=password,
                      user_agent="modmail archiver by u/SaatvikRamani",
