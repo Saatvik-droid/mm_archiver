@@ -17,29 +17,6 @@ subreddit = args.subreddit
 number = args.number
 reply = args.reply
 
-#archiver def
-def archive(modmails, number, reply):
-
-    # counter to count number of modmails gone through
-    counter = 0
-
-    for modmail in modmails:
-
-        counter = counter + 1
-
-        if counter > number:
-            break
-
-        if reply is not None:
-            modmail.reply(reply, author_hidden=True)
-        else:
-            pass
-
-        modmail.reply("Auto archiving, someone ran the script", internal=True)
-        modmail.archive()
-
-        print("{0} modmail(s) archived" .format(counter))
-
 # log into reddit
 reddit = praw.Reddit(client_id=secrets["client_id"],
                      client_secret=secrets["client_secret"],
@@ -50,7 +27,27 @@ reddit = praw.Reddit(client_id=secrets["client_id"],
 # obtain all modmail conversations
 modmails = reddit.subreddit("all").modmail.conversations(other_subreddits=subreddit, sort="recent", state="all")
 
-archive(modmails, number, reply)
+# counter to count number of modmails gone through
+counter = 0
+
+for modmail in modmails:
+
+    counter = counter + 1
+
+    if counter > number:
+        break
+
+    if reply is not None:
+        modmail.reply(reply, author_hidden=True)
+    else:
+        pass
+
+    modmail.reply("Auto archiving, someone ran the script", internal=True)
+    modmail.archive()
+
+    print("{0} modmail(s) archived".format(counter))
+
+print("Successful!!!")
 
 
 
