@@ -30,6 +30,7 @@ modmails = reddit.subreddit("all").modmail.conversations(other_subreddits=subred
 # counter to count number of modmails gone through
 counter = 0
 
+# actual archiving feature
 for modmail in modmails:
 
     counter = counter + 1
