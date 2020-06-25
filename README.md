@@ -5,4 +5,4 @@ The script uses python and PRAW (https://praw.readthedocs.io/en/latest/) to log 
 
 Run the script with -h as an arguemnt for help regarding the arguemnets. 
 
-*Create a `secrets.py` file with a dictionary variable `secrets` with `client_secret` and `client_id`
+*Create a `secrets.py` file with a dictionary variable `secrets` with `client_secret` and `client_id`*
