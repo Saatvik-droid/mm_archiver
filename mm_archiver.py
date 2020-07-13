@@ -29,7 +29,7 @@ reddit = praw.Reddit(client_id=secrets["client_id"],
                      username="SaatvikRamani")
 
 # obtain all modmail conversations
-modmails = reddit.subreddit("all").modmail.conversations(other_subreddits=subreddit, sort="recent", state="all")
+modmails = reddit.subreddit(subreddit).modmail.conversations(sort="recent", state="all")
 
 # counter to count number of modmails gone through
 counter = 0
